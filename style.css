@@ -165,10 +165,10 @@ header p {
 .play-btn {
   padding: 12px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #1d3557, #457b9d);
+  background: linear-gradient(135deg, #43cea2, #185a9d);
   color: white;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 60%; /* width for consistency */
@@ -192,7 +192,7 @@ header p {
   background: linear-gradient(135deg, #e63946, #d90429);
   color: white;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   flex: 1; /* equal button size */
   transition: all 0.3s ease;
