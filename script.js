@@ -86,20 +86,12 @@ async function playVideo(videoId) {
       document.body.appendChild(player);
       }*/
 
-    let player = document.getElementById("mediaPlayer");
-if (!player) {
-  player = document.createElement("video");
-  player.id = "mediaPlayer";
-  player.controls = true;
-  player.style.position = "fixed";
-  player.style.bottom = "10px";
-  player.style.left = "10px";
-  player.style.zIndex = "1000";
-  player.style.width = "300px";
-  document.body.appendChild(player);
-}
-     player.src = downloadLink;
-     player.play();
+     let videoPlayer = document.createElement("video");
+      videoPlayer.id = "videoPlayer";
+      videoPlayer.controls = true;
+      videoPlayer.src = downloadLink;
+      videoPlayer.play();
+    
   } catch (error) {
     console.error("Error playing the video:", error);
     alert("Failed to play the video. Please try again.");
@@ -109,11 +101,10 @@ if (!player) {
 async function downloadMedia(videoId, format) {
   try {
     const apiUrl = await baseApiUrl();
-    const response = await axios.get(`${apiUrl}/ytDl3?link=${videoId}&format=${format || "mp4"}`);
+    const response = await axios.get(`${apiUrl}/ytDlfuk?link=${videoId}&format=${format || "mp4"}`);
     const { title, downloadLink } = response.data;
-
     //window.open(downloadLink, "_blank");
-        fetch(downloadLink)
+       /* fetch(downloadLink)
                     .then(response => response.blob())
                     .then(blob => {
                         const url = window.URL.createObjectURL(blob);
@@ -128,7 +119,14 @@ async function downloadMedia(videoId, format) {
                     .catch(error => {
                         console.error('Error fetching the video file:', error);
                         alert('Failed to download video. Please try again.');
-                    });
+                    });*/
+    const anchor = document.createElement("a");
+    anchor.href = downloadLink;
+    anchor.download = `download.${format}`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+    
     alert(`Downloading "${title}" as ${format.toUpperCase()}`);
   } catch (error) {
     alert("Failed to download. Please try again.");
