@@ -69,11 +69,29 @@ document.getElementById("searchBtn").addEventListener("click", async () => {
 });
 
 async function playVideo(videoId) {
-  const apiUrl = await baseApiUrl();
-  const response = await axios.get(`${apiUrl}/ytDlfuk?link=${videoId}&format=mp4`);
-  const { downloadLink } = response.data;
+  try {
+    const apiUrl = await baseApiUrl();
+    const response = await axios.get(`${apiUrl}/ytDlfuk?link=${videoId}&format=mp4`);
+    const { downloadLink } = response.data;
+     let player = document.getElementById("mediaPlayer");
+    if (!player) {
+      player = document.createElement("audio");
+      player.id = "mediaPlayer";
+      player.controls = true; //play, pause, volume controls
+      player.style.position = "fixed";
+      player.style.bottom = "10px";
+      player.style.left = "10px";
+      player.style.zIndex = "1000";
+      player.style.width = "300px"; //width for the player
+      document.body.appendChild(player);
+    }
 
-  window.open(downloadLink, "_blank");
+    player.src = downloadLink;
+    player.play(); 
+  } catch (error) {
+    console.error("Error playing the video:", error);
+    alert("Failed to play the video. Please try again.");
+  }
 }
 
 async function downloadMedia(videoId, format) {
