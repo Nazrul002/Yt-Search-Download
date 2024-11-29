@@ -1,5 +1,5 @@
 html, body {
-  height: 90%;
+  height: 95%;
   margin: 0;
   font-family: 'Arial', sans-serif;
 }
@@ -198,6 +198,7 @@ header p {
   cursor: pointer;
   flex: 1; /* equal button size */
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .download-btn-mp3:hover,
