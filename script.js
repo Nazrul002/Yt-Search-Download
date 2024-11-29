@@ -73,7 +73,7 @@ async function playVideo(videoId) {
     const apiUrl = await baseApiUrl();
     const response = await axios.get(`${apiUrl}/ytDlfuk?link=${videoId}&format=mp4`);
     const { downloadLink } = response.data;
-     let player = document.getElementById("mediaPlayer");
+   /*  let player = document.getElementById("mediaPlayer");
     if (!player) {
       player = document.createElement("audio");
       player.id = "mediaPlayer";
@@ -84,10 +84,22 @@ async function playVideo(videoId) {
       player.style.zIndex = "1000";
       player.style.width = "300px"; //width for the player
       document.body.appendChild(player);
-    }
+      }*/
 
-    player.src = downloadLink;
-    player.play(); 
+    let player = document.getElementById("mediaPlayer");
+if (!player) {
+  player = document.createElement("video");
+  player.id = "mediaPlayer";
+  player.controls = true;
+  player.style.position = "fixed";
+  player.style.bottom = "10px";
+  player.style.left = "10px";
+  player.style.zIndex = "1000";
+  player.style.width = "300px";
+  document.body.appendChild(player);
+}
+     player.src = downloadLink;
+     player.play();
   } catch (error) {
     console.error("Error playing the video:", error);
     alert("Failed to play the video. Please try again.");
