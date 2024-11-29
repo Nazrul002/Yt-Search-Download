@@ -1,12 +1,7 @@
 html, body {
-  height: 95%;
+  height: 90%;
   margin: 0;
   font-family: 'Arial', sans-serif;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 90%;
 }
 
 main {
@@ -30,6 +25,9 @@ body {
   backdrop-filter: blur(10px);
   overflow: hidden;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 header h1 {
