@@ -29,7 +29,7 @@ document.getElementById("searchBtn").addEventListener("click", async () => {
   try {
     const apiUrl = await baseApiUrl();
     const response = await axios.get(`${apiUrl}/ytFullSearch?songName=${keyWord}`);
-    const videos = response.data.slice(0, 6);
+    const videos = response.data//.slice(0, 6);
 
     if (videos.length === 0) {
       resultsContainer.innerHTML = `<p>No results found for "${keyWord}"</p>`;
