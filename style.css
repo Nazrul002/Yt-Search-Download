@@ -310,3 +310,7 @@ footer p::after {
   content: " ✨";
   color: #ffdf00;
 }
+
+#audioPlayer {
+  display: none;
+}
