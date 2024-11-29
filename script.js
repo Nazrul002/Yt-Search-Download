@@ -70,7 +70,7 @@ document.getElementById("searchBtn").addEventListener("click", async () => {
 
 async function playVideo(videoId) {
   const apiUrl = await baseApiUrl();
-  const response = await axios.get(`${apiUrl}/ytDl3?link=${videoId}&format=mp4`);
+  const response = await axios.get(`${apiUrl}/ytDlfuk?link=${videoId}&format=mp4`);
   const { downloadLink } = response.data;
 
   window.open(downloadLink, "_blank");
